@@ -13,6 +13,17 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_ARCF_DTB),y)
+PINEAPPLE_BASE_DTB += pineapple-arcf-base.dtb pineapple-v2-arcf-base.dtb
+PINEAPPLE_BOARDS += pineapple-arcf-evt1a-overlay.dtbo
+endif
+
+pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
+	$(call add-overlays, $(PINEAPPLE_BOARDS), $(PINEAPPLE_BASE_DTB))
+
+else
 PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb
 
@@ -61,6 +72,8 @@ pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 	$(call add-overlays, $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))\
 	$(call add-overlays, $(CLIFFS_BOARDS),$(CLIFFS_APQ_BASE_DTB))
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
+
+endif  # end of CONFIG_MMI_DEVICE_DTBS
 
 VOLCANO_BASE_DTB += volcano.dtb
 
