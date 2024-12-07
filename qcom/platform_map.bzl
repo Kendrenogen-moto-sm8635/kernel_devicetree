@@ -339,6 +339,36 @@ _platform_map = {
             },
         ],
     },
+    "anorak": {
+        "dtb_list": [
+        ],
+        "dtbo_list": [
+        ],
+    },
+    "neo-la": {
+        "dtb_list": [
+        ],
+        "dtbo_list": [
+        ],
+    },
+    "seraph": {
+        "dtb_list": [
+        ],
+        "dtbo_list": [
+        ],
+    },
+    "niobe-tuivm": {
+        "dtb_list": [
+        ],
+        "dtbo_list": [
+        ],
+    },
+    "mdm9607": {
+        "dtb_list": [
+        ],
+        "dtbo_list": [
+        ],
+    },
 }
 
 def _get_dtb_lists(target, dt_overlay_supported):
